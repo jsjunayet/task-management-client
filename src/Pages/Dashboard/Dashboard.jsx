@@ -85,15 +85,15 @@ const Dashboard = () => {
                     <TaskForm onTaskAdd={handleTaskAdd} />
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
-                            <h2 className="text-xl font-semibold bg-rose-500 text-center text-white rounded-lg">To-Do</h2>
+                            <h2 className="text-xl font-semibold bg-rose-500 text-center text-white rounded-lg">To-Do: ({tasks.length})</h2>
                             <TaskList tasks={tasks} onTaskDelete={handleTaskDelete} onTaskStatusChange={handleTaskStatusChange} />
                         </div>
                         <div>
-                            <h2 className="text-xl font-semibold rounded-lg bg-rose-500 text-center text-white">Ongoing</h2>
+                            <h2 className="text-xl font-semibold rounded-lg bg-rose-500 text-center text-white">Ongoing : (0)</h2>
                             <TaskList tasks={tasks.filter((task) => task.status === 'ongoing')} onTaskDelete={handleTaskDelete} onTaskStatusChange={handleTaskStatusChange} />
                         </div>
                         <div>
-                            <h2 className="text-xl font-semibold rounded-lg bg-rose-500 text-center text-white shadow-lg">Completed</h2>
+                            <h2 className="text-xl font-semibold rounded-lg bg-rose-500 text-center text-white shadow-lg">Completed : (0)</h2>
                             <TaskList tasks={tasks.filter((task) => task.status === 'completed')} onTaskDelete={handleTaskDelete} onTaskStatusChange={handleTaskStatusChange} />
                         </div>
                     </div>
