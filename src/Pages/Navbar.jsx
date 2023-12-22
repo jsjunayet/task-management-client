@@ -1,23 +1,19 @@
 
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-
-// import UseAuth from "../Hooks/UseAuth";
-// import UseCardItem from "../Hooks/UseCarditem/UseCardItem";
-// import { FaCartShopping } from "react-icons/fa6";
-// import img from '../../src/assets/image/assets/home/placeholder.jpg'
+import { AuthControl } from "../router/AuthProvider";
 
 const Navber = ({ Children }) => {
-    // const { user, logOut } = UseAuth()
-    // const [card] = UseCardItem()
-    // const handlesingout = () => {
-    //     logOut()
-    //         .then(result => {
-    //             console.log(result)
-    //         })
-    //         .catch(error => {
-    //             console.log(error)
-    //         })
-    // }
+    const { logOut, user, } = useContext(AuthControl)
+    const handlesingout = () => {
+        logOut()
+            .then(result => {
+                console.log(result)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
     const navlink =
         <>
             <NavLink
@@ -28,82 +24,45 @@ const Navber = ({ Children }) => {
             >
                 Home
             </NavLink>
-            <NavLink
-                to="/dashboard"
-                className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? " border-b-2 border-gray-400" : ""
-                }
-            >
-                Dashboard
-            </NavLink>
+
             <NavLink
                 to="/task"
                 className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? " border-b-2 border-gray-400" : ""
                 }
             >
-                My task
+                All task
             </NavLink>
-            <NavLink
-                to="/login"
-                className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? " border-b-2 border-gray-400" : ""
-                }
-            >
-                Login
-            </NavLink>
-
-            {/* <Link>
-                <Link to={'/dashboard/mycart'} className=" flex items-center">
-                    <FaCartShopping className="text-3xl text-whie" />
-                    <div className="badge badge-secondary">{card.length}</div>
-                </Link>
-            </Link> */}
-            {/* <div className="dropdown dropdown-end">
-                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                        {
-                            user ? <img src={user?.photoURL} /> : <img src={img} alt="" />
+            {
+                user ? <div className="md:flex  gap-5 justify-center items-center">
+                    <NavLink
+                        to="/dashboard"
+                        className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? " border-b-2 border-gray-400" : ""
                         }
+                    >
+                        Dashboard
+                    </NavLink>
+                    <Link onClick={handlesingout}
+                        className=""
+                    >
+                        LogOut
+                    </Link>
 
-                    </div>
-                </label>
-                <ul tabIndex={0} className="mt-3 z-[1] text-black p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-60">
-
-                    <li>
-                        <a className="justify-between">
-                            {
-                                user ? user.displayName : 'Name'
-                            }
-                            <span className="badge">{card.length}</span>
-                        </a>
-                    </li>
-
-                    {
-                        user?.email ? <li> <NavLink
-                            to="/dashboard"
-                            className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? " border-b-2 border-gray-400" : ""
-                            }
-                        >
-                            dashboard
-                        </NavLink>
-                            <Link onClick={handlesingout} >LogOut</Link> </li> :
-                            <li><NavLink to="/login"
-                                className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? " border-b-2 border-gray-400" : ""
-                                }
-                            >Login </NavLink></li>
+                </div> : <NavLink
+                    to="/login"
+                    className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? " border-b-2 border-gray-400" : ""
                     }
-                </ul>
-            </div> */}
-
-
+                >
+                    Login
+                </NavLink>
+            }
         </>
     return (
         <div className="drawer">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content  z-40 w-full bg-[#15151599] opacity-100 flex flex-col">
+            <div className="drawer-content fixed z-40 w-full bg-[#15151599] opacity-100 flex flex-col">
                 {/* Navbar */}
                 <div className="navbar  max-w-7xl mx-auto">
                     <div className="flex-none lg:hidden">

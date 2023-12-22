@@ -4,11 +4,16 @@ import './index.css'
 import Navber from './Pages/Navbar.jsx'
 import { RouterProvider } from 'react-router-dom'
 import Routers from './router/Routers.jsx'
+import AuthProvider from './router/AuthProvider.jsx'
+import { Toaster } from 'react-hot-toast'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={Routers}>
-      <Navber></Navber>
-    </RouterProvider>
+    <AuthProvider>
+      <Toaster />
+      <RouterProvider router={Routers}>
+        <Navber></Navber>
+      </RouterProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )

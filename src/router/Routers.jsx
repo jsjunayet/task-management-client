@@ -1,12 +1,12 @@
-import React from 'react';
+
 import { createBrowserRouter } from 'react-router-dom';
-import Navber from '../Pages/Navbar';
-import Contact from '../Pages/Contact';
 import Home from '../Pages/Home/Home';
 import Dashboard from '../Pages/Dashboard/Dashboard';
 import MainLayout from '../Pages/MainLayout/MainLayout';
-import Task from '../Pages/Task';
 import Login from '../Pages/Login';
+import SignUp from '../component/SignUP/SignUp';
+import Update from '../Pages/Dashboard/Update';
+import AllTask from '../Pages/AllTask';
 
 const Routers = createBrowserRouter([
     {
@@ -18,18 +18,29 @@ const Routers = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: '/dashboard',
-                element: <Dashboard></Dashboard>
-            },
-            {
                 path: '/task',
-                element: <Task></Task>
+                element: <AllTask></AllTask>
             },
-            {
-                path: '/login',
-                element: <Login></Login>
-            },
+
         ]
+    },
+    {
+        path: '/login',
+        element: <Login></Login>
+    },
+    {
+        path: '/signup',
+        element: <SignUp></SignUp>
+    },
+    {
+        path: '/dashboard',
+        element: <Dashboard></Dashboard>
+    },
+    {
+        path: '/dashboard/:id',
+        element: <Update></Update>,
+        loader: ({ params }) => fetch(`http://localhost:5000/tasks/${params.id}`)
     }
+
 ]);
 export default Routers;

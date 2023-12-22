@@ -1,9 +1,12 @@
+import Bannar from "./Bannar";
+import Section from "./Section";
 
 
 const Home = () => {
     return (
         <div>
-            <h1> this is home page</h1>
+            <Bannar></Bannar>
+            <Section></Section>
         </div>
     );
 };
