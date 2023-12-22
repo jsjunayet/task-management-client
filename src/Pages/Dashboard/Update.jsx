@@ -23,7 +23,7 @@ const Update = () => {
     const { register, handleSubmit, reset } = useForm();
     return (
         <div className=" bg-gray-900 flex flex-col justify-center items-center min-h-screen">
-            <form onSubmit={handleSubmit(handleFormSubmit)} className="mb-6  mx-auto w-8/12 my-10 text-white p-6 rounded-lg shadow-md">
+            <form onSubmit={handleSubmit(handleFormSubmit)} className="mb-6 w-full  mx-auto md:w-8/12 my-10 text-white p-6 rounded-lg shadow-md">
                 <label className="block mb-4">
                     <span className="text-white">Title:</span>
                     <input {...register('title', { required: true })} defaultValue={taskid?.title} className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900" />
