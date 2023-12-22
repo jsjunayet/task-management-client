@@ -34,15 +34,16 @@ const Navber = ({ Children }) => {
                 All task
             </NavLink>
             {
-                user ? <div className="md:flex  gap-5 justify-center items-center">
+                user ? <div className="flex flex-col md:flex-row lg:flex-row gap-3 justify-center items-center">
                     <NavLink
                         to="/dashboard"
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? " border-b-2 border-gray-400" : ""
+                            isPending ? "pending mr-4" : isActive ? " border-b-2 border-gray-400 mr-4" : "mr-4"
                         }
                     >
                         Dashboard
                     </NavLink>
+
                     <Link onClick={handlesingout}
                         className=""
                     >
