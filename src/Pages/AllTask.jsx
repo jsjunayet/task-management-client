@@ -5,7 +5,7 @@ const AllTask = () => {
     const [tasks, setTasks] = useState([])
     useEffect(() => {
         const mytaks = async () => {
-            const response = await axios.get(`http://localhost:5000/alltasks`);
+            const response = await axios.get(`https://task-mangement-server-dun.vercel.app/alltasks`);
             setTasks(response.data);
         };
         mytaks();

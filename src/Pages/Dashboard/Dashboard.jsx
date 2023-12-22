@@ -17,7 +17,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         const fetchTasks = async () => {
-            const response = await axios.get(`http://localhost:5000/tasks?email=${user?.email}`);
+            const response = await axios.get(`https://task-mangement-server-dun.vercel.app/tasks?email=${user?.email}`);
             setTasks(response.data);
         };
 
@@ -30,7 +30,7 @@ const Dashboard = () => {
     };
 
     const handleTaskDelete = async (taskId) => {
-        await axios.delete(`http://localhost:5000/tasks/${taskId}`);
+        await axios.delete(`https://task-mangement-server-dun.vercel.app/tasks/${taskId}`);
         setTasks(tasks.filter((task) => task._id !== taskId));
         toast.success("Succefully Deleted")
     };
@@ -38,7 +38,7 @@ const Dashboard = () => {
     const handleTaskStatusChange = async (taskId) => {
         const taskToUpdate = tasks.find((task) => task._id === taskId);
         const newStatus = getNextStatus(taskToUpdate.status);
-        const response = await axios.patch(`http://localhost:5000/tasks/${taskId}`, { status: newStatus });
+        const response = await axios.patch(`https://task-mangement-server-dun.vercel.app/tasks/${taskId}`, { status: newStatus });
         const updatedTasks = tasks.map((task) => (task._id === taskId ? response.data : task));
         setTasks(updatedTasks);
     };
@@ -56,7 +56,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         const myuser = async () => {
-            const response = await axios.get(`http://localhost:5000/users?email=${user?.email}`);
+            const response = await axios.get(`https://task-mangement-server-dun.vercel.app/users?email=${user?.email}`);
             setUser(response.data);
         };
 

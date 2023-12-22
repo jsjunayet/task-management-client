@@ -13,7 +13,7 @@ const TaskForm = ({ onTaskAdd }) => {
         const priority = data.priority
         const status = "todo"
         const taskdata = { email, title, description, deadline, priority, status }
-        const response = await axios.post('http://localhost:5000/tasks', taskdata);
+        const response = await axios.post('https://task-mangement-server-dun.vercel.app/tasks', taskdata);
         onTaskAdd(response.data);
         reset();
     };

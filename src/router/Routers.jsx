@@ -39,7 +39,7 @@ const Routers = createBrowserRouter([
     {
         path: '/dashboard/:id',
         element: <Update></Update>,
-        loader: ({ params }) => fetch(`http://localhost:5000/tasks/${params.id}`)
+        loader: ({ params }) => fetch(`https://task-mangement-server-dun.vercel.app/tasks/${params.id}`)
     }
 
 ]);

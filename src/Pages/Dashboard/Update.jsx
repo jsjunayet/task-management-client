@@ -13,7 +13,7 @@ const Update = () => {
         const deadline = data.deadline
         const priority = data.priority
         const updatedata = { title, description, deadline, priority }
-        const res = await axios.put(`http://localhost:5000/update/${taskid._id}`, updatedata)
+        const res = await axios.put(`https://task-mangement-server-dun.vercel.app/update/${taskid._id}`, updatedata)
         if (res.data.modifiedCount) {
             toast.success("Succsfully modifier")
             navigate('/dashboard')
